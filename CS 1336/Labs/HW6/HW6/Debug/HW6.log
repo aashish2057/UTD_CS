@@ -1,0 +1,3 @@
+﻿  HW6.cpp
+d:\desktop\cs 1336\labs\hw6\hw6\hw6.cpp(34): warning C4715: 'getChoice': not all control paths return a value
+  HW6.vcxproj -> D:\Desktop\CS 1336\Labs\HW6\Debug\HW6.exe
