@@ -28,11 +28,11 @@ string lower(string s) // convert all characters to lowercase, as capital and lo
 
 void fix(string &s1) // remove all spaces from string as they don't matter
 {   
-    for(int i = 0; i < s1.length()-1; i++)
+    for(int i = 0; i < s1.length()-1; i++) // go through loop
     {
-        if(s1[i] == ' ' || ispunct(s1[i]) || ispunct(s1[s1.length()-1]))
+        if(s1[i] == ' ' || ispunct(s1[i]) || ispunct(s1[s1.length()-1])) // if there is a space, or punctuation or punctuation on last character
         {
-            s1.erase(i--, 1);
+            s1.erase(i--, 1); // erase that character
         }
     }
 }
