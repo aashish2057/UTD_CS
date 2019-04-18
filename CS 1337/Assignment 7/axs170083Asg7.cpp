@@ -26,37 +26,50 @@ string lower(string s) // convert all characters to lowercase, as capital and lo
     return s1;
 }
 
-void spaces(string &s1) // remove all spaces from string as they don't matter
+void fix(string &s1) // remove all spaces from string as they don't matter
 {   
     for(int i = 0; i < s1.length()-1; i++)
     {
-        if(s1[i] == ' ')
+        if(s1[i] == ' ' || ispunct(s1[i]) || ispunct(s1[s1.length()-1]))
         {
             s1.erase(i--, 1);
         }
     }
 }
 
-void punctuation(string &s1) // remove all punctuation from string as they don't matter
+bool isPalindrome(string s1) // determine if string is a palindrome recursively
 {
-    for(int i = 0; i < s1.length()-1; i++)
+    int len = s1.length(); // get length of string
+    if(len == 1) // if length of string is 1, it is palindrome
     {
-        if(ispunct(s1[i]))
-        {
-            s1.erase(i--, 1);
-        }
+        return true;
+    }
+    // took me a while to figure this out, but when there is an even number of characters such as dd, and first is last, I can't have it go through the function again, because the string would just be empty, so this works.
+    else if(s1[0] == s1[len-1] && len == 2)
+    {
+        return true;
+    }
+    else if(s1[0] == s1[len-1]) // first character is equal to last character
+    {
+        s1 = s1.substr(1, len-2); // remove first and last character
+        return isPalindrome(s1); // recursive loop, that goes and checks if first and last are same again
+    }
+    else
+    {
+        return false; // not a palindrome if first character is not equal to last character
     }
 }
 
-bool isPalindrome(string s1)
+void print(string s, bool test) // print to user 
 {
-    
-}
-
-void print(string s, string s1) // print to user
-{
-    cout << s << endl;
-    cout << s1 << endl;
+    if(test == true) // if string is palindrome, inform user
+    {
+        cout << "String " << s << " is a palindrome" << endl;
+    }
+    else // inform user string is not palindrome
+    {
+        cout << "String " << s << " is not a palindrome" << endl;
+    }
 }
 
 int main()
@@ -64,19 +77,20 @@ int main()
     string s;
     string s1;
     bool valid = true;
-    while(valid)
+    bool test = false;
+    while(valid) // continue asking user for string
     {
         input(s); // get input from user
-        if(s == "*")
+        if(s == "*") // if user enter '*' end program
         {
             valid = false;
         }
         else
         {
             s1 = lower(s); // convert everything to lower
-            spaces(s1); // removes all spaces in string
-            punctuation(s1); // remove all punctuation from string
-            print(s, s1);
+            fix(s1); // removes all spaces and punctuation from string
+            test = isPalindrome(s1); // determine if string is palindrome
+            print(s, test); // inform user if string is palindrome or not
         }
     }
 }
