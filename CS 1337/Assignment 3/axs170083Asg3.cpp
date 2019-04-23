@@ -24,17 +24,13 @@ string input(string filename) // get file name from user
     cin >> filename;
     return filename;
 }
-
-<<<<<<< HEAD
-int readFile(string filename, double list[100]) // read in data from file
-=======
 bool readFile(string filename, double list[100], int &count) // read in data from file and determine number of elements to store in array
->>>>>>> 5a5e16ac1d0aafde9e3d3aa5f2f9e844cff323ea
+
 {
     ifstream inputFile;
     inputFile.open(filename); // open file
     int i = 0;
-<<<<<<< HEAD
+
     int count = 0;
     while(inputFile >> list[i]) // store file values in array
     {
@@ -48,7 +44,6 @@ bool readFile(string filename, double list[100], int &count) // read in data fro
 void sort(double list[100], int count)
 {
     // do something in here idk what though
-=======
     bool File = true;
     if(inputFile) // File opens successfull
     {
@@ -89,21 +84,19 @@ void print(double list[100], int count) // print sorted list
     {
         cout << list[i] << endl; 
     }
->>>>>>> 5a5e16ac1d0aafde9e3d3aa5f2f9e844cff323ea
 }
 
 int main()
 {
     double list[100]; 
     bool valid = true;
-<<<<<<< HEAD
     int count = 0;
     string filename;
-=======
+
     bool File = true;
     int count = 0;
     string filename; 
->>>>>>> 5a5e16ac1d0aafde9e3d3aa5f2f9e844cff323ea
+
 
     while(valid)
     {
@@ -114,23 +107,18 @@ int main()
         }
         else
         {
-<<<<<<< HEAD
             count = readFile(filename, list); // read in value from file
             sort(list, count);
             for(int i = 0; i < count; i++)
             {
                 cout << list[i] << endl;
             }
-        } 
-        
-=======
+        }
             File = readFile(filename, list, count); // read in value from file
             if(File) // if file is valid sort and print
             {
                 sort(list, count); // perform insertion sort on the array
                 print(list, count); // print sorted array
             } 
-        }  
->>>>>>> 5a5e16ac1d0aafde9e3d3aa5f2f9e844cff323ea
-    }
+    } 
 }
